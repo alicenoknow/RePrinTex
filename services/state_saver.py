@@ -13,7 +13,7 @@ def save_collections(collections_list: List[ImageCollection]):
         for collection in collections_list:
             saved_collections_paths.append({'name': collection.name,
                                             'path': save_collection(collection)})
-    with open('./resources/coll.json', "w") as outfile:
+    with open('./coll.json', "w") as outfile:
         json.dump(saved_collections_paths, outfile)
     # raise IOError
 
@@ -42,7 +42,7 @@ def save_collection(collection: ImageCollection) -> str:
     filename = collection.detail_file_name + '.json'
     # print(collection_save_form)
     # print(collection.detail_file_name)
-    with open('./resources/colldet/' + filename, "w") as outfile:
+    with open('./colldet/' + filename, "w") as outfile:
         json.dump(collection_save_form, outfile)
         return filename
     # raise IOError
@@ -52,7 +52,7 @@ def save_view_config(image_provider: ImagesProvider):
     view_data = {}
     view_data['current_collection_index'] = image_provider.current_collection_index
     view_data['current_image_index'] = image_provider.current_image_index
-    with open('./resources/viewcfg.json', "w") as outfile:
+    with open('./viewcfg.json', "w") as outfile:
         json.dump(view_data, outfile)
     # raise IOError
 

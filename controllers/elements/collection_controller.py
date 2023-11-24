@@ -131,7 +131,7 @@ class CollectionController:
                     break
             for coll in coll_json:
                 if coll["name"] == name:
-                    path = "./resources/colldet/" + coll["path"]
+                    path = "./colldet/" + coll["path"]
                     if os.path.exists(path):
                         os.remove(path)
                     break
