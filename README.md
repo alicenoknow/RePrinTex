@@ -1,4 +1,4 @@
-![alt text](https://github.com/faci2000/RePrinTex/blob/main/data/icons/Logo1.png?raw=true)
+![alt text](https://github.com/faci2000/RePrinTex/blob/main/resources/icons/Logo1.png?raw=true)
 
 ## Description
 Desktop app for text photos proccessing, especially for straightening curved lines of text.

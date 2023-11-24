@@ -10,7 +10,7 @@ from models.page_info import PageInfo
 
 def read_collections_json():
     try:
-        with open('./data/coll.json', 'r') as json_data:
+        with open('./resources/coll.json', 'r') as json_data:
             collections = json.load(json_data)
             return collections
     except FileNotFoundError:
@@ -30,7 +30,7 @@ def read_saved_collections() -> List[ImageCollection]:
 
 def read_saved_collection_data(path: str) -> ImageCollection:
     # print(path)
-    path = './data/colldet/' + path
+    path = './resources/colldet/' + path
     with open(path, 'r') as json_data:
         collection = json.load(json_data)
         img_coll = ImageCollection(name=collection['name'])
@@ -54,7 +54,7 @@ def read_saved_collection_data(path: str) -> ImageCollection:
 
 def read_view_config(image_provider: sip.ImagesProvider):
     try:
-        with open('./data/viewcfg.json', 'r') as json_data:
+        with open('./resources/viewcfg.json', 'r') as json_data:
             data = json.load(json_data)
             image_provider.current_collection_index = data['current_collection_index']
             image_provider.current_image_index = data['current_image_index']

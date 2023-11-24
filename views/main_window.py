@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         #Icon
-        self.setWindowIcon(QtGui.QIcon('data/icons/Logo2.png'))
+        self.setWindowIcon(QtGui.QIcon('resources/icons/Logo2.png'))
         # Geometry
         self.setGeometry(600, 300, 1080, 720)
         self.setWindowTitle("RePrinTex")

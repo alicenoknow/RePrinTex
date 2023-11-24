@@ -62,7 +62,7 @@ class ToolBarController:
         layout.addWidget(webEngineView)
 
         try:
-            f = open('data/help/help.html', 'r')
+            f = open('resources/help/help.html', 'r')
         except (OSError, FileNotFoundError,  Exception) as e:
             Controller().communicator.error.emit("Cannot open help :c")
         else:

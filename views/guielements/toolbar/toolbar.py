@@ -47,14 +47,14 @@ class ToolBar:
 
     def _helper(self):
         help_ = QAction("&Help", self.parent)
-        set_icon("data/icons/help", help_, "Help")
+        set_icon("resources/icons/help", help_, "Help")
         help_.setStatusTip("Show help")
         help_.triggered.connect(lambda: self.controller.helper())
         return help_
 
     def get_undo(self):
         undo_button = QToolButton(self.parent)
-        set_icon("data/icons/undo", undo_button, "Undo")
+        set_icon("resources/icons/undo", undo_button, "Undo")
         undo_button.setShortcut('Ctrl+z')
         undo_button.setStatusTip("Erases the last change done")
         undo_button.clicked.connect(lambda: ImagesProvider().undo())
@@ -63,7 +63,7 @@ class ToolBar:
 
     def get_redo(self):
         redo_button = QToolButton(self.parent)
-        set_icon("data/icons/redo", redo_button, "Redo")
+        set_icon("resources/icons/redo", redo_button, "Redo")
         redo_button.setShortcut('Ctrl+x')
         redo_button.setStatusTip("Restores the change that was previously undone")
         redo_button.clicked.connect(lambda: ImagesProvider().redo())
@@ -72,7 +72,7 @@ class ToolBar:
 
     def _zoom_in(self):
         zoom_in = QToolButton(self.parent)
-        set_icon("data/icons/zoom_in", zoom_in, "Zoom in")
+        set_icon("resources/icons/zoom_in", zoom_in, "Zoom in")
         zoom_in.setShortcut('Ctrl+i')
         zoom_in.setStatusTip("Zoom in")
         zoom_in.pressed.connect(lambda: self.controller.zoom_pressed(zoom_in=True))
@@ -81,7 +81,7 @@ class ToolBar:
 
     def _zoom_out(self):
         zoom_out = QToolButton(self.parent)
-        set_icon("data/icons/zoom_out", zoom_out, "Zoom out")
+        set_icon("resources/icons/zoom_out", zoom_out, "Zoom out")
         zoom_out.setShortcut('Ctrl+o')
         zoom_out.setStatusTip("Zoom out")
         zoom_out.pressed.connect(lambda: self.controller.zoom_pressed(zoom_in=False))
