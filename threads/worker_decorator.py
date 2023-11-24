@@ -32,11 +32,10 @@ class Worker(QtCore.QThread):
 
 
 def multi_thread_runner(func):
-    @wraps(func)
-    def async_func(*args, **kwargs):
-        worker = Worker(func, *args, **kwargs)
-        func.__worker = worker
-        worker.start()
-        return worker
-
-    return async_func
+    # @wraps(func)
+    # def async_func(*args, **kwargs):
+    #     worker = Worker(func, *args, **kwargs)
+    #     func.__worker = worker
+    #     worker.start()
+    #     return worker
+    return func
