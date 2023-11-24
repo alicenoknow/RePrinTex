@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QCheckBox, QDockWidget, QHBoxLayout, QVBoxLayout, QSlider, QLabel, QWidget, QPushButton, \
     QRadioButton
 
-from controllers.guielements.effects_controller import EffectsController
+from controllers.elements.effects_controller import EffectsController
 from models.effects import EffectType, Lines
 from services.images_provider import ImagesProvider
 from views.guielements.effects_layout import add_clean, add_stains, add_contrast

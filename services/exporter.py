@@ -5,7 +5,7 @@ from models.image import Image
 from services.images_provider import EmptyCollectionException, ImagesProvider
 import os
 
-
+@multi_thread_runner
 def apply_to_all():
     img_prov = ImagesProvider()
     effects = img_prov.get_current_collection().effects
@@ -18,7 +18,7 @@ def apply_to_all():
         export_one( image,
                    "./tmp/" + img_prov.get_current_collection().detail_file_name + "/" + image.name + "_rpt" + no + ".png")
 
-
+@multi_thread_runner
 def export_one(image: Image=None, path: str=None):
     try:
         if image==None and path==None:
@@ -42,7 +42,7 @@ def export_one(image: Image=None, path: str=None):
         Controller().communicator.error.emit("Cannot create a directory!")
         return
 
-
+@multi_thread_runner
 def export_all():
     img_prov = ImagesProvider()
     try:

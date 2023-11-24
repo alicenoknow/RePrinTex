@@ -9,7 +9,7 @@ from PyQt5.QtGui import QPixmap
 import models.effects as me
 import models.image_collection as mic
 from controllers.controller import Controller
-from controllers.guielements.image_preview_controller import ImagePreviewController
+from controllers.elements.image_preview_controller import ImagePreviewController
 from imgmaneng.img_cleaner import clean_page, increase_contrast, remove_stains
 from imgmaneng.img_converter import convert_cv2Image_to_QPixmap
 from imgmaneng.lines_boundary_drawer import draw_lines_and_boundaries
@@ -40,7 +40,7 @@ class EmptyCollectionException(Exception):
 
 class ImagesProvider(metaclass=ImagesProviderMeta):
     def __init__(self, image_view: ImagePreviewController = None) -> None:
-        import controllers.guielements.collection_controller as cgcc
+        import controllers.elements.collection_controller as cgcc
         self.collections: List[mic.ImageCollection] = []
         self.current_collection_index: int = None
         self.current_image_index: int = None
@@ -165,24 +165,15 @@ class ImagesProvider(metaclass=ImagesProviderMeta):
                       img.stains)# ,
 
                 key = effects.get_key(img)
-                print("SET KEY: ",key)
                 if key in effects.reworked_imgs:
                     moded_img = effects.reworked_imgs[key].copy()
-                    # cv2.imshow("read from history", moded_img)
-                    # effects.history.append(key)
-                    # self.set_mod_image(self.draw_lines(moded_img,effects.values[me.EffectType.LINES]))
-                    # return True
                 else:
                     moded_img = self.create_new_reworked_image()
-                    # cv2.imshow("created new",moded_img)
-                    print("# MODED_IMG",id(moded_img))
                     effects.reworked_imgs[key] = moded_img.copy()
-                    print("# COPIED_IMG",id(effects.reworked_imgs[key]))
                 if changes:
                     effects.add_new_key_to_history(key)
                     effects.current_history_index += 1  # dodać przycinanie historii oraz obecny index
                 img_with_drawings = self.draw_lines(moded_img, effects.values[me.EffectType.LINES.value])
-                print("# IMG_WITH_DRAWINGS",id(img_with_drawings))
                 img.last_mod_pixmap = convert_cv2Image_to_QPixmap(img_with_drawings)
                 self.set_mod_image(img_with_drawings)
                 return True
@@ -204,16 +195,13 @@ class ImagesProvider(metaclass=ImagesProviderMeta):
             img = lines_streigtening(original_image)
         else:
             img = cv2.imread(original_image.path)
-        # cv2.imshow("read from path",img)
         if effects.values[me.EffectType.UPPER_SHIFT.value] and effects.values[me.EffectType.LOWER_SHIFT.value]:
             img = clean_page(img, effects.values[me.EffectType.UPPER_SHIFT.value],
                              effects.values[me.EffectType.LOWER_SHIFT.value])
 
         if effects.values[me.EffectType.CONTRAST_INTENSITY.value]:
             img = increase_contrast(img, effects.values[me.EffectType.CONTRAST_INTENSITY.value])
-        # cv2.imshow("after contrast",img)
 
-        # cv2.imshow("after cleaning",img)
         if original_image.stains:
             for stain in original_image.stains:
                 img = remove_stains(img, stain['x'], stain['y'], stain['r'])
@@ -262,7 +250,6 @@ class ImagesProvider(metaclass=ImagesProviderMeta):
     def change_image_to_next(self):
         index = self.image_selector.view.files_list.currentIndex().row()
         size = self.image_selector.view.files_list.count()
-        print("Image change next: ",index,size,(index+1)%size)
         self.image_selector.view.files_list.setCurrentRow((index+1)%size)
         self.change_current_image((index+1)%size)
         self.set_image_to_display()
@@ -270,7 +257,6 @@ class ImagesProvider(metaclass=ImagesProviderMeta):
     def change_image_to_prev(self):
         index = self.image_selector.view.files_list.currentIndex().row()
         size = self.image_selector.view.files_list.count()
-        print("Image change prev: ",index,size,(index-1)%size)
         self.image_selector.view.files_list.setCurrentRow((index-1)%size)
         self.change_current_image((index-1)%size)
         self.set_image_to_display()

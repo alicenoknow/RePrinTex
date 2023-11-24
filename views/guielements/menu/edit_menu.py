@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QAction, QMenu
 
 from controllers.controller import Controller
-from controllers.guielements.menu_bar_controller import MenuBarController
+from controllers.elements.menu_bar_controller import MenuBarController
 from services.images_provider import ImagesProvider
 import services.exporter as se
 

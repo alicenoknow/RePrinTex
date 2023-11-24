@@ -2,7 +2,7 @@ import os.path
 
 from PyQt5.QtWidgets import QMenu, QAction
 
-from controllers.guielements.menu_bar_controller import MenuBarController
+from controllers.elements.menu_bar_controller import MenuBarController
 from services.state_reader import read_style_config
 
 DARK = read_style_config() == "dark"

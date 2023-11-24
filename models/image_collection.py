@@ -21,13 +21,11 @@ class ImageCollection:
         self.effects: Effects = Effects()
         self.lines_on_org = set()
         self.current_image_id = None
-        print(path)
         if path:
             self.path = path
             self.detect_images()
 
     def detect_images(self):
-        print("Detecting images")
         filenames = os.listdir(self.path)
         img_files = [file for file in filenames if self.check_img_ext(file)]
         for img in img_files:
@@ -36,11 +34,8 @@ class ImageCollection:
                                  QPixmap(QImage(self.path + '/' + img))))
 
     def check_img_ext(self, file):
-        print(file)
         for regex in Image.img_ext:
-            print(regex)
             x = re.search(regex, file)
-            print(x)
             if x:
                 return True
         return False
@@ -52,7 +47,6 @@ class ImageCollection:
         self.current_image_id = None
         self.collection = []
 
-    # ta nazwa mi sie totalne nie podoba ale chodzi o pixmape i nazwe do collection_view zeby pokazać miniaturke
     def get_image_elements(self, idx):
         return self.collection[idx].pixmap, self.collection[idx].name
 

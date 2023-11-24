@@ -37,5 +37,6 @@ def multi_thread_runner(func):
         worker = Worker(func, *args, **kwargs)
         func.__worker = worker
         worker.start()
+        return worker
 
     return async_func

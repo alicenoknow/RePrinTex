@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QBoxLayout, QDialog, QDialogButtonBox
 
-from controllers.guielements.archive_creator_controller import ArchiveCreatorController
+from controllers.elements.archive_creator_controller import ArchiveCreatorController
 
 
 class ArchiveCreator(QDialog):

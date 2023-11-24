@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QComboBox, QDockWidget, QListWidget, QListWidgetItem
 
 class CollectionView:
     def __init__(self, parent) -> None:
-        from controllers.guielements.collection_controller import CollectionController
+        from controllers.elements.collection_controller import CollectionController
         self.parent = parent
         self.controller = CollectionController(parent, self)
         self.dock = QDockWidget("Collections", self.parent)

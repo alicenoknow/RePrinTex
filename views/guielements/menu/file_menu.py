@@ -3,7 +3,7 @@ from services.state_saver import save_collection, save_collections, save_view_co
 from services.exporter import export_all, export_one
 from PyQt5.QtWidgets import QAction, QMenu
 
-from controllers.guielements.menu_bar_controller import MenuBarController
+from controllers.elements.menu_bar_controller import MenuBarController
 
 
 class FileMenu:

@@ -4,7 +4,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QAction, QToolBar, QToolButton, QMainWindow
 
 from controllers.controller import Controller
-from controllers.guielements.toolbar_controller import ToolBarController
+from controllers.elements.toolbar_controller import ToolBarController
 from services.images_provider import ImagesProvider
 from services.state_reader import read_style_config
 
